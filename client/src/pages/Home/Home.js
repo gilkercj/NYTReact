@@ -14,9 +14,6 @@ class Articles extends Component {
     name: "",
     articles: [],
     query: "",
-    headline: "",
-    publishDate: "",
-    url: ""
   };
 
   componentDidMount() {
@@ -62,18 +59,13 @@ class Articles extends Component {
     });
   };
 
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   if (this.state.title && this.state.author) {
-  //     API.saveBook({
-  //       title: this.state.title,
-  //       author: this.state.author,
-  //       synopsis: this.state.synopsis
-  //     })
-  //       .then(res => this.loadBooks())
-  //       .catch(err => console.log(err));
-  //   }
-  // };
+  handleFormSubmit = event => {
+    event.preventDefault();
+    if (this.state.query) {
+      this.state.articles = [];
+      this.searchNYT(this.state.query);
+    }
+  };
 
   saveItem = (headline, publishDate, url) => {
 
@@ -86,15 +78,6 @@ class Articles extends Component {
         .catch(err => console.log(err));
     };
 
-
-
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    const query = "";
-    // this.searchNYT()
-  };
-
   render() {
     return (
       <Container fluid>
@@ -105,10 +88,13 @@ class Articles extends Component {
             </Jumbotron>
             <form>
               <Input
-                value={this.state.query}
-                onChange={this.handleInputChange}
-                name="Search for Article"
-                placeholder="Search"
+        onChange={this.handleInputChange}
+        name="query"
+        type="text"
+        className="form-control"
+        id="userSearchTopic"
+        placeholder="Queen Elizabeth"
+        required
               />
               <FormBtn
                 disabled={!(this.state.query)}
