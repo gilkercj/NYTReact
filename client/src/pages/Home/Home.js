@@ -100,7 +100,7 @@ class Articles extends Component {
                 disabled={!(this.state.query)}
                 onClick={this.handleFormSubmit}
               >
-                Search Article
+                Search Articles
               </FormBtn>
             </form>
           </Col>
@@ -112,13 +112,12 @@ class Articles extends Component {
               <List>
                 {this.state.articles.map(article => (
                   <ListItem key={article.i}>
-                    <Link to={"/articles/" + article.i}>
                       <a href={article.web_url}>
                         <strong>
-                          {article.headline.main} published on {article.pub_date}
+                          {article.headline.main} 
                         </strong>
+                         , published on {article.pub_date}
                       </a>
-                    </Link>
                     <SaveBtn onClick={() => this.saveItem(article.headline.main, article.pub_date, article.web_url)}>Save</SaveBtn>
 
                   </ListItem>
@@ -136,14 +135,12 @@ class Articles extends Component {
               <List>
                 {this.state.saved.map(article => (
                   <ListItem key={article._id}>
-                    <Link to={"/articles/" + article._id}>
+
                       <a href={article.url}>
                         <strong>
-                          {article.headline} published on {article.publishDate}
-                        </strong>
+                          {article.headline}</strong>, saved on {article.date}
+                        
                       </a>
-                    </Link>
-
                     <DeleteBtn onClick={() => this.deleteArticle(article._id)} />
 
                   </ListItem>
