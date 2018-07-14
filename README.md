@@ -8,3 +8,4 @@ This app allows for users to search the New York Times article database for rele
 
 To use this app just search for articles using keywords. To save the articles click the save button nex to each article.
 
+The app can be accessed here: https://nyt-reactydoo.herokuapp.com/
